@@ -18,20 +18,21 @@ def convert_x_numbering(abc):
     return converted_abc
 
 
-directory = sys.argv[1]
-output_file_path = os.path.join(directory, "merged.abc")
+if __name__ == "__main__":
+    directory = sys.argv[1]
+    output_file_path = os.path.join(directory, "merged.abc")
 
-if os.path.exists(output_file_path):
-    os.remove(output_file_path)
+    if os.path.exists(output_file_path):
+        os.remove(output_file_path)
 
-output = str()
+    output = str()
 
-for file_name in os.listdir(directory):
-    if file_name.endswith(".abc"):
-        with open(os.path.join(directory, file_name), "r") as input_file:
-            output = (output + "\n\n" if output != str() else str()) + input_file.read()
+    for file_name in os.listdir(directory):
+        if file_name.endswith(".abc"):
+            with open(os.path.join(directory, file_name), "r") as input_file:
+                output = (output + "\n\n" if output != str() else str()) + input_file.read()
 
-        output = convert_x_numbering(output)
+            output = convert_x_numbering(output)
 
-        with open(output_file_path, "w") as output_file:
-            output_file.write(output)
+            with open(output_file_path, "w") as output_file:
+                output_file.write(output)
