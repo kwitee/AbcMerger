@@ -18,8 +18,7 @@ def convert_x_numbering(abc):
     return converted_abc
 
 
-if __name__ == "__main__":
-    directory = sys.argv[1]
+def main(directory):
     output_file_path = os.path.join(directory, "merged.abc")
 
     if os.path.exists(output_file_path):
@@ -36,3 +35,7 @@ if __name__ == "__main__":
 
             with open(output_file_path, "w") as output_file:
                 output_file.write(output)
+
+
+if __name__ == "__main__":
+    main(sys.argv[1])
